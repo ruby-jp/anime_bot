@@ -51,7 +51,7 @@ workflows:
       - today_anime:
           slack_channel: "slack_sandbox"
 
-  weekday_scheduler:
+  scheduler:
     triggers:
       - schedule:
           cron: "0 8 * * *" # JST 17:00
