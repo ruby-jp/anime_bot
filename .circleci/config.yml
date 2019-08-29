@@ -1,25 +1,46 @@
 version: 2.1
 
-orbs:
-  ruby-orbs: sue445/ruby-orbs@1.3.4
-
 jobs:
   today_anime:
     parameters:
       slack_channel:
         type: string
         default: ""
+      cache_key_prefix:
+        type: string
+        default: "v1"
     docker:
-      - image: ruby:2.5-slim
+      - image: circleci/ruby:2.6
     environment:
       SLACK_CHANNEL: "<< parameters.slack_channel >>"
       BUNDLE_PATH__SYSTEM: "false"
     working_directory: ~/app
     steps:
       - checkout
-      - ruby-orbs/bundle-install:
-          bundle_extra_args: "--without development"
-          restore_bundled_with: false
+
+      - restore_cache:
+          keys:
+            - << parameters.cache_key_prefix >>-{{ .Environment.CIRCLE_JOB }}-{{ checksum "Gemfile.lock" }}-{{ .Branch }}
+            - << parameters.cache_key_prefix >>-{{ .Environment.CIRCLE_JOB }}-{{ checksum "Gemfile.lock" }}
+            - << parameters.cache_key_prefix >>-{{ .Environment.CIRCLE_JOB }}
+            - << parameters.cache_key_prefix >>
+
+      - run:
+          name: bundle install
+          command: |
+            bundle install --jobs=4  --path vendor/bundle --retry 4 --without development --clean
+
+      - run:
+          name: restore-bundled-with
+          command: |
+            gem install restore_bundled_with --no-document
+            restore-bundled-with
+
+      - save_cache:
+          key: << parameters.cache_key_prefix >>-{{ .Environment.CIRCLE_JOB }}-{{ checksum "Gemfile.lock" }}-{{ .Branch }}
+          paths:
+            - vendor/bundle
+
       - run: bundle exec ruby today_anime.rb
 
 workflows:
@@ -28,22 +49,12 @@ workflows:
   build:
     jobs:
       - today_anime:
-          slack_channel: "test"
+          slack_channel: "slack_sandbox"
 
   weekday_scheduler:
     triggers:
       - schedule:
-          cron: "0 10 * * 1-5" # JST 19:00 (Mon-Fri)
-          filters:
-            branches:
-              only: master
-    jobs:
-      - today_anime
-
-  holiday_scheduler:
-    triggers:
-      - schedule:
-          cron: "0 8 * * 0,6" # JST 17:00 (Sun,Sat)
+          cron: "0 8 * * *" # JST 17:00
           filters:
             branches:
               only: master
