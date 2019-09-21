@@ -5,11 +5,6 @@ class TodayAnime < SlackBot
   END_HOUR = 4
   END_MINUTE = 0
 
-  def initialize
-    super
-    Time.zone = "Tokyo"
-  end
-
   def perform_all
     config = YAML.load_file("#{__dir__}/../config/today_anime.yml")
 

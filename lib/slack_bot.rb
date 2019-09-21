@@ -7,6 +7,7 @@ class SlackBot
     raise "SLACK_WEBHOOK_URL is required" unless ENV["SLACK_WEBHOOK_URL"]
 
     @slack_webhook_url = ENV["SLACK_WEBHOOK_URL"]
+    Time.zone = "Tokyo"
   end
 
   # @param channel [String]
