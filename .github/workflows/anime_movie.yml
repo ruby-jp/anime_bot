@@ -33,4 +33,4 @@ jobs:
           bundle exec rake anime_movie
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-          GITHUB_EVENT_NAME: ${{ github.event.name }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
