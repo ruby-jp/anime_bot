@@ -11,7 +11,7 @@ export SLACK_WEBHOOK_URL=xxxxx
 # optional
 # export SLACK_CHANNEL=xxxxx
 
-bundle exec ruby today_anime.rb
+bundle exec rake today_anime
 ```
 
 ## 仕組み
