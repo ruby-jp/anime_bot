@@ -30,7 +30,7 @@ jobs:
             export SLACK_CHANNEL=slack_sandbox
           fi
 
-          bundle exec ruby today_anime.rb
+          bundle exec rake today_anime
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           GITHUB_EVENT_NAME: ${{ github.event.name }}
