@@ -47,7 +47,7 @@ jobs:
       - checkout
       - bundle_install
 
-      - run: bundle exec ruby today_anime.rb
+      - run: bundle exec rake today_anime
 
 workflows:
   version: 2
