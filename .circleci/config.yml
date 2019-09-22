@@ -1,0 +1,97 @@
+version: 2.1
+
+commands:
+  bundle_install:
+    parameters:
+      cache_key_prefix:
+        type: string
+        default: "v1"
+
+    steps:
+      - restore_cache:
+          keys:
+            - << parameters.cache_key_prefix >>-{{ .Environment.CIRCLE_JOB }}-{{ checksum "Gemfile.lock" }}-{{ .Branch }}
+            - << parameters.cache_key_prefix >>-{{ .Environment.CIRCLE_JOB }}-{{ checksum "Gemfile.lock" }}
+            - << parameters.cache_key_prefix >>-{{ .Environment.CIRCLE_JOB }}
+            - << parameters.cache_key_prefix >>
+
+      - run:
+          name: bundle install
+          command: |
+            bundle install --jobs=4  --path vendor/bundle --retry 4 --without development --clean
+
+      - run:
+          name: restore-bundled-with
+          command: |
+            gem install restore_bundled_with --no-document
+            restore-bundled-with
+
+      - save_cache:
+          key: << parameters.cache_key_prefix >>-{{ .Environment.CIRCLE_JOB }}-{{ checksum "Gemfile.lock" }}-{{ .Branch }}
+          paths:
+            - vendor/bundle
+
+jobs:
+  today_anime:
+    parameters:
+      slack_channel:
+        type: string
+        default: ""
+    docker:
+      - image: circleci/ruby:2.6
+    environment:
+      SLACK_CHANNEL: "<< parameters.slack_channel >>"
+      BUNDLE_PATH__SYSTEM: "false"
+    working_directory: ~/app
+    steps:
+      - checkout
+      - bundle_install
+
+      - run: bundle exec rake today_anime
+
+  anime_movie:
+    parameters:
+      slack_channel:
+        type: string
+        default: ""
+    docker:
+      - image: circleci/ruby:2.6
+    environment:
+      SLACK_CHANNEL: "<< parameters.slack_channel >>"
+      BUNDLE_PATH__SYSTEM: "false"
+    working_directory: ~/app
+    steps:
+      - checkout
+      - bundle_install
+
+      - run: bundle exec rake anime_movie
+
+workflows:
+  version: 2
+
+  build:
+    jobs:
+      - today_anime:
+          slack_channel: "slack_sandbox"
+      - anime_movie:
+          slack_channel: "slack_sandbox"
+
+  daily_scheduler:
+    triggers:
+      - schedule:
+          cron: "0 8 * * *" # JST 17:00
+          filters:
+            branches:
+              only: master
+    jobs:
+      - today_anime
+
+  weekly_scheduler:
+    triggers:
+      - schedule:
+          cron: "0 8 * * 5" # JST 17:00 (Fri)
+          filters:
+            branches:
+              only: master
+    jobs:
+      - anime_movie
