@@ -1,4 +1,4 @@
-# これから放映されるアニメをポストするSlackボット
+# アニメ情報をポストするSlackボット
 ## Setup
 ```bash
 bundle install
@@ -12,6 +12,7 @@ export SLACK_WEBHOOK_URL=xxxxx
 # export SLACK_CHANNEL=xxxxx
 
 bundle exec rake today_anime
+bundle exec rake anime_movie
 ```
 
 ## 仕組み
