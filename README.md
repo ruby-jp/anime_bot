@@ -1,4 +1,6 @@
 # アニメ情報をポストするSlackボット
+[![CircleCI](https://circleci.com/gh/ruby-jp/anime_bot/tree/master.svg?style=svg)](https://circleci.com/gh/ruby-jp/anime_bot/tree/master)
+
 ## Setup
 ```bash
 bundle install
