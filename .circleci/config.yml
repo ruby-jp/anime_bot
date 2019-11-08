@@ -89,7 +89,7 @@ workflows:
   weekly_scheduler:
     triggers:
       - schedule:
-          cron: "0 8 * * 5" # JST 17:00 (Fri)
+          cron: "0 8 * * 4" # JST 17:00 (Thu)
           filters:
             branches:
               only: master
