@@ -76,10 +76,20 @@ workflows:
       - anime_movie:
           slack_channel: "slack_sandbox"
 
-  daily_scheduler:
+  weekday_scheduler:
     triggers:
       - schedule:
-          cron: "0 8 * * *" # JST 17:00
+          cron: "0 8 * * 1-5" # JST 17:00 (Mon-Fri)
+          filters:
+            branches:
+              only: master
+    jobs:
+      - today_anime
+
+  holiday_scheduler:
+    triggers:
+      - schedule:
+          cron: "0 23 * * 5-6" # JST 8:00 (Sun,Sat)
           filters:
             branches:
               only: master
