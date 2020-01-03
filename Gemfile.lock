@@ -29,7 +29,7 @@ GEM
       pry (~> 0.10)
     rake (12.3.3)
     slack-notifier (2.3.2)
-    syobocalite (0.1.1)
+    syobocalite (1.0.0)
       activesupport
       multi_xml
     syoboi_calendar (0.9.4)
@@ -50,8 +50,8 @@ DEPENDENCIES
   pry-byebug
   rake
   slack-notifier
-  syobocalite
+  syobocalite (>= 1.0.0)
   syoboi_calendar
 
 BUNDLED WITH
-   1.17.3
+   2.1.2
