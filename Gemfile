@@ -8,7 +8,7 @@ gem "activesupport", require: "active_support/all"
 gem "hpricot"
 gem "rake", require: false
 gem "slack-notifier"
-gem "syobocalite"
+gem "syobocalite", ">= 1.0.0"
 gem "syoboi_calendar"
 
 group :development do
