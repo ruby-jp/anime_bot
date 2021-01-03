@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/fusic/slack-notifier
+  revision: 91b11278911d32199d4349ff0a59fdd7d63e9e8d
+  branch: resolve_warning_ruby27
+  specs:
+    slack-notifier (2.3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,7 +40,6 @@ GEM
       pry (~> 0.13.0)
     rake (13.0.3)
     ruby2_keywords (0.0.2)
-    slack-notifier (2.3.2)
     syobocalite (1.0.0)
       activesupport
       multi_xml
@@ -54,7 +60,7 @@ DEPENDENCIES
   libxml-ruby
   pry-byebug
   rake
-  slack-notifier
+  slack-notifier!
   syobocalite (>= 1.0.0)
   syoboi_calendar
 
