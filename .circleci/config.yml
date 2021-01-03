@@ -23,6 +23,7 @@ commands:
       - run:
           name: restore-bundled-with
           command: |
+            gem install git --version 1.7.0 --no-document
             gem install restore_bundled_with --no-document
             restore-bundled-with
 
