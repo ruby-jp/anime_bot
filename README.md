@@ -19,7 +19,7 @@ bundle exec rake anime_movie
 
 ## 仕組み
 * ブランチがpushされたら `#slack_sandbox` に投稿されます
-* スケジューラーからの実行はIncoming Webhookに設定されてるチャンネル ( `#anime` ) に投稿されます
+* スケジューラーからの実行はIncoming Webhookに設定されてるチャンネル ( `#anime_bot` ) に投稿されます
 
 ## オリジナル
 https://github.com/sue445/today_anime
