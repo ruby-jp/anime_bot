@@ -32,14 +32,18 @@ commands:
           paths:
             - vendor/bundle
 
+.default: &default
+  docker:
+    - image: cimg/ruby:3.3
+
 jobs:
   today_anime:
+    <<: *default
+
     parameters:
       slack_channel:
         type: string
         default: ""
-    docker:
-      - image: circleci/ruby:3.0
     environment:
       SLACK_CHANNEL: "<< parameters.slack_channel >>"
       BUNDLE_PATH__SYSTEM: "false"
@@ -51,12 +55,12 @@ jobs:
       - run: bundle exec rake today_anime
 
   anime_movie:
+    <<: *default
+
     parameters:
       slack_channel:
         type: string
         default: ""
-    docker:
-      - image: circleci/ruby:2.7
     environment:
       SLACK_CHANNEL: "<< parameters.slack_channel >>"
       BUNDLE_PATH__SYSTEM: "false"
