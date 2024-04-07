@@ -39,13 +39,13 @@ class AnimeMovie < SlackBot
   #
   # @return [Array<Hash>] :date, :title, :url をKeyにもつHashのArray
   def fetch_movie_list
-    doc = URI.open("http://www.kansou.me/animeka/movie.html") { |f| Hpricot(f) }
+    page = Mechanize.new.get("http://www.kansou.me/animeka/movie.html")
 
     movies =
-      doc.search("//table[@class='list']/tr").each_with_object([]) do |tr, movies|
-        next unless tr.at("//td")
+      page.search("table.list tr").each_with_object([]) do |tr, movies|
+        next unless tr.at("td")
 
-        date = tr.at("//td[1]").inner_text.strip
+        date = tr.at("td[1]").inner_text.strip
 
         unless date.match?(%r(^\d+/\d+/\d+))
           # 正確な日付が入っていない場合はスキップする
@@ -54,10 +54,10 @@ class AnimeMovie < SlackBot
 
         movie = {
           date: Date.parse(date),
-          title: tr.at("//td[2]").inner_text.strip,
+          title: tr.at("td[2]").inner_text.strip,
         }
 
-        if (a = tr.at("//td[2]/a"))
+        if (a = tr.at("td[2] a"))
           movie[:url] = a["href"]
         end
 
