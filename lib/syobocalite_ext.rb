@@ -1,4 +1,8 @@
+require "open-uri"
+
 class Syobocalite::Program
+  USER_AGENT = "anime_bot (+https://github.com/ruby-jp/anime_bot)"
+
   # Slackに投稿するための文言に整形する
   # @return [String]
   def format
@@ -55,12 +59,27 @@ class Syobocalite::Program
   private
 
   # @see https://sites.google.com/site/syobocal/spec/proginfo-flag
+  # @return [Integer]
   def flag
-    return @flag if @flag
+    @flag ||= get_db_flag
+  end
 
-    client = SyoboiCalendar::Client.new
-    response = client.list_programs(title_id: tid, program_id: pid)
+  # @see https://docs.cal.syoboi.jp/spec/db.php/
+  # @return [Integer]
+  def get_db_flag
+    params = {
+      "Command" => "ProgLookup",
+      "Fields" => "Flag",
+      "TID" => tid,
+      "PID" => pid,
+    }
 
-    @flag = response.resources.first.flag
+    headers = {
+      "User-Agent" => USER_AGENT,
+    }
+
+    xml = URI.open("https://cal.syoboi.jp/db.php?#{params.to_param}", headers).read
+    response = MultiXml.parse(xml)
+    response["ProgLookupResponse"]["ProgItems"]["ProgItem"]["Flag"].to_i
   end
 end
