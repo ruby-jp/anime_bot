@@ -56,7 +56,7 @@ GEM
     rake (13.2.1)
     rubyntlm (0.6.3)
     slack-notifier (2.4.0)
-    syobocalite (1.0.1)
+    syobocalite (1.1.0)
       activesupport
       multi_xml
     tzinfo (2.0.6)
@@ -74,7 +74,7 @@ DEPENDENCIES
   multi_xml
   rake
   slack-notifier (>= 2.4.0)
-  syobocalite (>= 1.0.0)
+  syobocalite (>= 1.1.0)
 
 BUNDLED WITH
    2.5.3
