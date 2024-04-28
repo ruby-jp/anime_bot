@@ -102,6 +102,7 @@ DEPENDENCIES
   activesupport
   libxml-ruby
   mechanize
+  multi_xml
   rake
   slack-notifier (>= 2.4.0)
   syobocalite (>= 1.0.0)
