@@ -11,4 +11,3 @@ gem "multi_xml"
 gem "rake", require: false
 gem "slack-notifier", ">= 2.4.0"
 gem "syobocalite", ">= 1.0.0"
-gem "syoboi_calendar"
