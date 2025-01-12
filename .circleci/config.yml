@@ -34,7 +34,7 @@ commands:
 
 .default: &default
   docker:
-    - image: cimg/ruby:3.3
+    - image: cimg/ruby:3.4
 
 jobs:
   today_anime:
