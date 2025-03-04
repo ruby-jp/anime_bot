@@ -69,7 +69,7 @@ GEM
       multi_xml
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    uri (1.0.2)
+    uri (1.0.3)
     webrick (1.9.1)
     webrobots (0.1.2)
 
@@ -83,6 +83,7 @@ DEPENDENCIES
   rake
   slack-notifier (>= 2.4.0)
   syobocalite (>= 1.1.0)
+  uri (>= 1.0.3)
 
 BUNDLED WITH
    2.6.2
