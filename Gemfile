@@ -10,3 +10,4 @@ gem "mechanize"
 gem "rake", require: false
 gem "slack-notifier", ">= 2.4.0"
 gem "syobocalite", ">= 1.1.0"
+gem "uri", ">= 1.0.3"
