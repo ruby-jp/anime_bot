@@ -64,7 +64,7 @@ GEM
       base64
     securerandom (0.4.1)
     slack-notifier (2.4.0)
-    syobocalite (1.1.1)
+    syobocalite (1.2.0)
       activesupport
       multi_xml
     tzinfo (2.0.6)
@@ -82,7 +82,7 @@ DEPENDENCIES
   mechanize
   rake
   slack-notifier (>= 2.4.0)
-  syobocalite (>= 1.1.0)
+  syobocalite (>= 1.2.0)
   uri (>= 1.0.3)
 
 BUNDLED WITH
