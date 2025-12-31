@@ -61,7 +61,7 @@ GEM
     prism (1.7.0)
     public_suffix (6.0.1)
     racc (1.8.1)
-    rake (13.2.1)
+    rake (13.3.1)
     rubyntlm (0.6.5)
       base64
     securerandom (0.4.1)
@@ -114,7 +114,7 @@ CHECKSUMS
   prism (1.7.0) sha256=10062f734bf7985c8424c44fac382ac04a58124ea3d220ec3ba9fe4f2da65103
   public_suffix (6.0.1) sha256=61d44e1cab5cbbbe5b31068481cf16976dd0dc1b6b07bd95617ef8c5e3e00c6f
   racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
-  rake (13.2.1) sha256=46cb38dae65d7d74b6020a4ac9d48afed8eb8149c040eccf0523bec91907059d
+  rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
   rubyntlm (0.6.5) sha256=47013402b99ae29ee93f930af51edaec8c6008556f4be25705a422b4430314f5
   securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
   slack-notifier (2.4.0) sha256=cd9aba3f5f3e6227f73df1f6a33ac6c127c5fac35b513b86b7ba900cd98d2b00
