@@ -1,0 +1,24 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+      time: "05:00"
+      timezone: Asia/Tokyo
+    assignees:
+      - sue445
+    cooldown:
+      default-days: 7
+
+  - package-ecosystem: bundler
+    directory: /
+    schedule:
+      interval: monthly
+      time: "05:00"
+      timezone: Asia/Tokyo
+    assignees:
+      - sue445
+    versioning-strategy: lockfile-only
+    cooldown:
+      default-days: 7
