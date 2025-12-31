@@ -27,7 +27,7 @@ GEM
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     json (2.18.0)
-    libxml-ruby (5.0.3)
+    libxml-ruby (5.0.5)
     logger (1.7.0)
     mechanize (2.14.0)
       addressable (~> 2.8)
@@ -99,7 +99,7 @@ CHECKSUMS
   http-cookie (1.0.8) sha256=b14fe0445cf24bf9ae098633e9b8d42e4c07c3c1f700672b09fbfe32ffd41aa6
   i18n (1.14.8) sha256=285778639134865c5e0f6269e0b818256017e8cde89993fdfcbfb64d088824a5
   json (2.18.0) sha256=b10506aee4183f5cf49e0efc48073d7b75843ce3782c68dbeb763351c08fd505
-  libxml-ruby (5.0.3) sha256=5a530dba36066752bba59515ae612362c1343f1d0ee6cf74700499c7dd2a2bde
+  libxml-ruby (5.0.5) sha256=f1bc07152982df555d70159a694ee2a53539de2cdad4b3c8a447fbb15e7e4e9a
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
   mechanize (2.14.0) sha256=33e76b7639d0181a46eaf1136b05f0e9043dfc5fc4b1a7b9fd8ae8bd437dd5e4
   mime-types (3.6.0) sha256=6f71db957840ceae44211531eff3e2f7e0dd4645fefb5f535dbaeb6307ab6464
