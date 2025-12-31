@@ -18,7 +18,10 @@ commands:
       - run:
           name: bundle install
           command: |
-            bundle install --jobs=4  --path vendor/bundle --retry 4 --without development --clean
+            bundle config set --local path vendor/bundle
+            bundle config set --local without development
+            bundle config set --local clean 'true'
+            bundle install --jobs=4 --retry 4
 
       - run:
           name: restore-bundled-with
