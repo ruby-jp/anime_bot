@@ -81,7 +81,7 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
-  libxml-ruby
+  libxml-ruby (< 6.0.0)
   mechanize
   rake
   slack-notifier (>= 2.4.0)
